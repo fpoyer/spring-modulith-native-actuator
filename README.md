@@ -8,6 +8,10 @@ Run `git clone https://github.com/fpoyer/spring-modulith-native-actuator.git && 
 Run `./mvnw ./mvnw -Pnative clean spring-boot:build-image` to compile native image  
 Run `docker run --rm spring-native-actuator:0.0.1-SNAPSHOT` to run the image  
 
+## [Edit : Solution]
+The problem is caused by spring-modulith-observability, which uses archunit that is not (yet) graalvm ready.  
+Removing it from the classpath, by changing the dependency from spring-modulith-starter-insight to spring-modulith-actuator solves the situation and the application starts with no error
+
 ## Expected
 The Application starts with no error
 
